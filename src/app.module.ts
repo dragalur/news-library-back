@@ -11,13 +11,7 @@ import { IdResponse } from './middleware/idResponse';
 import { MongodbConnectionModule } from './mongo/mongo.module';
 
 @Module({
-	imports: [
-		ConfigurationModule,
-		ConfigModule,
-		MongooseModule.forRoot(
-			'mongodb://uewbyjhzgnavqkxvonjv:FDsSA79BAJDtPsmYN4rM@bh9mmdcanzdrgy1-mongodb.services.clever-cloud.com:27017/bh9mmdcanzdrgy1',
-		),
-	],
+	imports: [ConfigurationModule, ConfigModule, MongodbConnectionModule.forRoot()],
 	controllers: [AppController],
 	providers: [AppService, AuthModule, HomeModule],
 })

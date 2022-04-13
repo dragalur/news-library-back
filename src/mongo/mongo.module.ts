@@ -1,6 +1,5 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { config } from 'process';
 import { mongoVariables } from '../configuration/configuration.constants';
 
 export class MongodbConnectionModule {
