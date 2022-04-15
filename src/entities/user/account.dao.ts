@@ -7,15 +7,15 @@ import { Account, UserDocument } from './account.schema';
 export class AccountDAO {
 	constructor(@InjectModel(Account.name) private readonly userModel: Model<UserDocument>) {}
 
-	// public findByUsername = (username: string) => {
-	// 	return this.userModel.findOne({ username });
-	// };
-
-	// public findById = (id: string | ObjectId) => {
-	// 	return this.userModel.findById(id);
-	// };
+	public findByEmail = (email: string, projection = {}) => {
+		return this.userModel.findOne({ email }, projection);
+	};
 
 	public createUser = (userData: Partial<UserDocument>) => {
 		return this.userModel.create(userData);
+	};
+
+	public doesUserExist = (email: string, username: string) => {
+		return this.userModel.findOne({ $or: [{ email }, { username }] }, { email: 1, username: 1, _id: 0 }).lean();
 	};
 }

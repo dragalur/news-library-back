@@ -5,6 +5,7 @@ export const mongoVariables = {
 	password: 'MONGO_INITDB_ROOT_PASSWORD',
 	database: 'MONGO_DATABASE',
 	uri: 'MONGODB_URI',
+	queryString: 'MONGODB_QUERY',
 };
 
 export const externalAPIVariables = {

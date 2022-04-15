@@ -16,9 +16,8 @@ export class MongodbConnectionModule {
 	};
 
 	private static factory = async (configs: ConfigService) => {
-		const { host, user, password, database, port } = this.connectionOptions(configs);
-		const uri = `mongodb://${user}:${password}@${host}:${port}/${database}`;
-		return { uri };
+		const { host, user, password, database, port, queryString } = this.connectionOptions(configs);
+		return { uri: `mongodb://${user}:${password}@${host}:${port}/${database}?${queryString}` };
 	};
 
 	private static connectionOptions(config: ConfigService) {
@@ -28,6 +27,7 @@ export class MongodbConnectionModule {
 			user: config.get(mongoVariables.user),
 			password: config.get(mongoVariables.password),
 			database: config.get(mongoVariables.database),
+			queryString: config.get(mongoVariables.queryString),
 		};
 	}
 }

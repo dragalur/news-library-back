@@ -7,6 +7,6 @@ export class HomeController {
 
 	@Get('')
 	getHomeData() {
-		this.homeService.getData();
+		return this.homeService.getData();
 	}
 }

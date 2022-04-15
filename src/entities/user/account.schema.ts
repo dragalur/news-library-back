@@ -5,13 +5,13 @@ export type UserDocument = Account & Document;
 
 @Schema({ collection: 'users', timestamps: true })
 export class Account {
-	@Prop(String)
+	@Prop({ type: String, unique: true })
 	email: string;
 
 	@Prop(String)
 	password: string;
 
-	@Prop(String)
+	@Prop({ type: String, unique: true })
 	username: string;
 }
 
