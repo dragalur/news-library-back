@@ -4,7 +4,7 @@ import { saltRounds } from './hashing.configs';
 
 @Injectable()
 export class HashingService {
-    public hash = (password: string) => bcrypt.hashSync(password, saltRounds);
+	public hash = (value: string) => bcrypt.hashSync(value, saltRounds);
 
-    public doMatch = (password: string, hash: string) => bcrypt.compare(password, hash);
+	public doMatch = (value: string, hash: string) => bcrypt.compare(value, hash);
 }

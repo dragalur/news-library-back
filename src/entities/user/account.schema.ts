@@ -13,6 +13,9 @@ export class Account {
 
 	@Prop({ type: String, unique: true })
 	username: string;
+
+	@Prop(String)
+	refreshToken: string;
 }
 
 export const AccountSchema = SchemaFactory.createForClass(Account);

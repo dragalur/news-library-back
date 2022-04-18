@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { Public } from '../../passport/public.guard';
 import { AccountService } from './account.service';
 
@@ -18,8 +18,14 @@ export class AccountController {
 		return this.accountService.createDefaultUser(body);
 	}
 
-	@Get('profile')
-	getProfile(@Request() req) {
-		return req.user;
+	@Public()
+	@Post('refreshToken')
+	updateAccessToken(@Body() body) {
+		return this.accountService.getAccessTokenFromRefresh(body.refreshToken);
+	}
+
+	@Post('profile')
+	logout(@Body() body) {
+		return this.accountService.logout(body.refreshToken);
 	}
 }

@@ -16,6 +16,6 @@ export class JwtInitializeModule {
 	public static registerGuard = () => ({ provide: APP_GUARD, useClass: JwtAuthGuard });
 
 	private static factory = (configService: ConfigService): JwtModuleOptions => {
-		return { secret: configService.get<string>(jwtVariables.secret), signOptions: { expiresIn: '60s' } };
+		return { secret: configService.get<string>(jwtVariables.secret), signOptions: { expiresIn: '1h' } };
 	};
 }

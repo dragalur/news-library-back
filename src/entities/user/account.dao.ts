@@ -7,6 +7,10 @@ import { Account, UserDocument } from './account.schema';
 export class AccountDAO {
 	constructor(@InjectModel(Account.name) private readonly userModel: Model<UserDocument>) {}
 
+	public findById = (_id: string, projection = {}) => {
+		return this.userModel.findOne({ _id }, projection);
+	};
+
 	public findByEmail = (email: string, projection = {}) => {
 		return this.userModel.findOne({ email }, projection);
 	};
