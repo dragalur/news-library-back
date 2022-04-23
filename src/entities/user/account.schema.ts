@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type UserDocument = Account & Document;
 
-@Schema({ collection: 'users', timestamps: true })
+@Schema({ collection: 'users' })
 export class Account {
 	@Prop({ type: String, unique: true })
 	email: string;

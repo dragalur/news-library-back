@@ -24,8 +24,8 @@ export class AccountController {
 		return this.accountService.getAccessTokenFromRefresh(body.refreshToken);
 	}
 
-	@Post('profile')
-	logout(@Body() body) {
-		return this.accountService.logout(body.refreshToken);
+	@Post('logout')
+	logout(@Body('_id') _id: string) {
+		return this.accountService.logout(_id);
 	}
 }

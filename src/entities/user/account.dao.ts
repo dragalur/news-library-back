@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, FilterQuery, UpdateQuery } from 'mongoose';
 import { Account, UserDocument } from './account.schema';
 
 @Injectable()
@@ -17,6 +17,10 @@ export class AccountDAO {
 
 	public createUser = (userData: Partial<UserDocument>) => {
 		return this.userModel.create(userData);
+	};
+
+	public updateUserById = (query: FilterQuery<UserDocument>, updateQuery: UpdateQuery<UserDocument>) => {
+		return this.userModel.updateOne(query, updateQuery);
 	};
 
 	public doesUserExist = (email: string, username: string) => {
